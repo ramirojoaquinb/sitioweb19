@@ -96,8 +96,9 @@
         <h2>Redes y contacto</h2>
         <p class="sub">Escribinos y te pasamos fotos, talles y stock del día.</p>
         <div class="links">
-          <a id="linkInstagram" href="https://instagram.com/tienda.demo" target="_blank" rel="noopener">📸 Instagram</a>
-          <a id="linkTelefono" href="tel:+5491100000000">📞 Llamar a la tienda</a>
+          <a id="linkResena" href="https://search.google.com/local/writereview?placeid=ChIJoYl36oa1vJURWWhqD9z3UV8" target="_blank" rel="noopener">⭐ Dejanos una reseña en Google</a>
+          <a id="linkInstagram" href="https://instagram.com/ramirojoaquinb" target="_blank" rel="noopener">📸 Instagram</a>
+          <a id="linkTelefono" href="tel:+5491144102657">📞 Llamar a la tienda</a>
         </div>
       </section>
     </div>
@@ -129,7 +130,7 @@
   <footer><span id="foot">Tienda Demo</span> · Página demo — pasame los datos reales y la actualizo</footer>
 </div>
 
-<a class="wa-float" id="waFloat" href="https://wa.me/5491100000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+<a class="wa-float" id="waFloat" href="https://wa.me/5491144102657" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
 <script>
 'use strict';
@@ -137,12 +138,13 @@
 const CONFIG = {
   nombre: "Tienda Demo",
   tagline: "Ropa urbana · Básicos, remeras, buzos y jeans",
-  whatsapp: "5491100000000",
-  telefonoDisplay: "+54 9 11 0000-0000",
+  whatsapp: "5491144102657",
+  telefonoDisplay: "+54 9 11 4410-2657",
   dirCorta: "Av. Demo 1234, Caseros",
   dirLarga: "Av. Demo 1234, Caseros, Buenos Aires — a 3 cuadras de la estación.",
   maps: "https://maps.google.com/?q=Av.+Demo+1234+Caseros",
-  instagram: "https://instagram.com/tienda.demo",
+  instagram: "https://instagram.com/ramirojoaquinb",
+  resena: "https://search.google.com/local/writereview?placeid=ChIJoYl36oa1vJURWWhqD9z3UV8",
   catalogo: "https://ejemplo.com/catalogo"
 };
 const $ = (id) => document.getElementById(id);
@@ -154,6 +156,7 @@ $("direccionLarga").textContent = CONFIG.dirLarga;
 $("foot").textContent = CONFIG.nombre;
 $("linkMapa").href = CONFIG.maps;
 $("linkInstagram").href = CONFIG.instagram;
+$("linkResena").href = CONFIG.resena;
 $("linkTelefono").href = "tel:+" + CONFIG.whatsapp;
 $("linkTelefono").textContent = "📞 Llamar a " + CONFIG.telefonoDisplay;
 $("waFloat").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent("Hola " + CONFIG.nombre + "! Quiero info del catálogo.");
