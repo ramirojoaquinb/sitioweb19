@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tienda Demo · Ropa urbana | Mirá la vidriera y pedí por WhatsApp</title>
+<meta name="description" content="Tienda demo de ropa urbana. Mirá la vidriera, novedades y pedí por WhatsApp. Lun a Sáb 10–20.">
+<meta name="theme-color" content="#111111">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F6F5F1; --card: #FFFFFF; --ink: #141414; --soft: #6B6B6B;
+    --border: #E7E3D8; --accent: #111111; --accent-soft: #EDEDED;
+    --gold: #A8710C; --radius: 16px;
+    --shadow: 0 1px 2px rgba(0,0,0,.05), 0 12px 32px -16px rgba(0,0,0,.25);
+    --max: 960px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Inter', system-ui, sans-serif; color: var(--ink); background: var(--bg); display: flex; justify-content: center; padding: 0 16px 96px; line-height: 1.55; }
+  .wrap { width: 100%; max-width: var(--max); }
+  .hero { text-align: center; padding: 44px 8px 18px; }
+  .logo { width: 72px; height: 72px; margin: 0 auto 12px; border-radius: 22px; background: #111; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 34px; box-shadow: var(--shadow); }
+  .badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
+  .pill { font-size: .78rem; font-weight: 600; border: 1px solid var(--border); background: #fff; color: var(--soft); border-radius: 999px; padding: 5px 13px; }
+  .pill.dark { background: #111; color: #fff; border-color: #111; }
+  .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 2.8rem); margin: 0 0 4px; }
+  .hero p.tag { color: var(--soft); margin: 0 0 8px; }
+  .hero-meta { color: var(--soft); font-size: .88rem; }
+  .hero-meta b { color: var(--ink); }
+  .grid { display: grid; gap: 18px; margin-top: 20px; grid-template-columns: 1fr; }
+  @media (min-width: 880px) { .grid { grid-template-columns: 1.05fr .95fr; align-items: start; } .sticky { position: sticky; top: 16px; } }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+  .card h2 { font-family: 'Fraunces', serif; margin: 0 0 4px; font-size: 1.3rem; }
+  .sub { color: var(--soft); font-size: .88rem; margin: 0 0 14px; }
+  .kicker { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); }
+  .prods { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .prods { grid-template-columns: 1fr 1fr; } }
+  .prod { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #FCFBF8; }
+  .prod .img { aspect-ratio: 1/1.1; display: flex; align-items: center; justify-content: center; font-size: 52px; background: linear-gradient(160deg, #EFEDE6, #E2DED2); }
+  .prod .body { padding: 10px 12px 12px; }
+  .prod .name { font-weight: 600; font-size: .9rem; }
+  .prod .cat { font-size: .76rem; color: var(--soft); }
+  .prod button { margin-top: 8px; width: 100%; border: 1.5px solid #111; background: #fff; border-radius: 999px; padding: 8px; font: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; }
+  .prod button:hover { background: #111; color: #fff; }
+  .links { display: grid; gap: 10px; }
+  .links a { display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; color: var(--ink); border: 1px solid var(--border); border-radius: 12px; padding: 13px; font-weight: 600; background: #fff; }
+  .links a:hover { border-color: #111; transform: translateY(-1px); }
+  .links a.primary { background: #111; color: #fff; border-color: #111; }
+  .horas { list-style: none; padding: 0; margin: 0; }
+  .horas li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .93rem; color: var(--soft); }
+  .horas li:last-child { border: 0; }
+  .horas li span:last-child { color: var(--ink); font-weight: 600; }
+  label { display: block; font-size: .83rem; color: var(--soft); margin: 12px 0 5px; font-weight: 500; }
+  input, select, textarea { width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 11px 12px; font: inherit; background: var(--bg); color: var(--ink); }
+  button.cta { width: 100%; margin-top: 16px; background: #111; color: #fff; border: none; border-radius: 12px; padding: 15px; font-weight: 700; font-size: 1rem; cursor: pointer; }
+  footer { text-align: center; color: var(--soft); font-size: .75rem; margin-top: 26px; }
+  .wa-float { position: fixed; right: 16px; bottom: 16px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; box-shadow: 0 8px 26px rgba(0,0,0,.3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="logo">👕</div>
+    <div class="badges">
+      <span class="pill dark" id="estadoAbierto">● comprobando horario…</span>
+      <span class="pill">Novedades todas las semanas</span>
+      <span class="pill">Talles S al XXL</span>
+    </div>
+    <h1 id="nombreNegocio">Tienda Demo</h1>
+    <p class="tag" id="tagline">Ropa urbana · Básicos, remeras, buzos y jeans</p>
+    <div class="hero-meta">📍 <b id="direccionCorta">Av. Demo 1234, Caseros</b> · 🕒 <b id="hoyHorario">Lun a Sáb 10–20</b></div>
+  </header>
+
+  <div class="grid">
+    <div style="display:grid;gap:18px">
+      <section class="card">
+        <span class="kicker">Vidriera</span>
+        <h2>Novedades demo</h2>
+        <p class="sub">Tocá “Consultar” y te armamos el mensaje por WhatsApp. Sin precios por ahora.</p>
+        <div class="prods" id="prods"></div>
+      </section>
+
+      <section class="card">
+        <span class="kicker">El local</span>
+        <h2>Dónde estamos</h2>
+        <p class="sub" id="direccionLarga">Av. Demo 1234, Caseros, Buenos Aires — a 3 cuadras de la estación.</p>
+        <ul class="horas">
+          <li><span>Lunes a Sábado</span><span>10:00–20:00</span></li>
+          <li><span>Domingo</span><span>Cerrado</span></li>
+        </ul>
+        <div style="height:12px"></div>
+        <div class="links">
+          <a id="linkMapa" href="https://maps.google.com/?q=Av.+Demo+1234+Caseros" target="_blank" rel="noopener">📍 Cómo llegar en Maps</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <span class="kicker">Comunidad</span>
+        <h2>Redes y contacto</h2>
+        <p class="sub">Escribinos y te pasamos fotos, talles y stock del día.</p>
+        <div class="links">
+          <a id="linkInstagram" href="https://instagram.com/tienda.demo" target="_blank" rel="noopener">📸 Instagram</a>
+          <a id="linkTelefono" href="tel:+5491100000000">📞 Llamar a la tienda</a>
+        </div>
+      </section>
+    </div>
+
+    <main>
+      <section class="card sticky" id="consulta">
+        <span class="kicker">Consulta rápida</span>
+        <h2>Pedí por WhatsApp</h2>
+        <p class="sub">Sin seña · Te respondemos en el día.</p>
+        <form id="form" novalidate>
+          <label for="nombre">Tu nombre</label>
+          <input id="nombre" placeholder="Ej: Lucía" minlength="2" maxlength="60">
+          <label for="prod">Prenda de interés</label>
+          <select id="prod"></select>
+          <label for="talle">Talle</label>
+          <select id="talle">
+            <option>S</option><option selected>M</option><option>L</option>
+            <option>XL</option><option>XXL</option><option>Otro / consultar</option>
+          </select>
+          <label for="notas">Aclaración (opcional)</label>
+          <textarea id="notas" maxlength="300" placeholder="Ej: ¿tenés en negro? ¿hacen envíos?"></textarea>
+          <button class="cta" type="submit" id="btn">Consultar por WhatsApp</button>
+          <p class="sub" style="text-align:center;margin:10px 0 0">Se abre WhatsApp con el mensaje ya armado.</p>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <footer><span id="foot">Tienda Demo</span> · Página demo — pasame los datos reales y la actualizo</footer>
+</div>
+
+<a class="wa-float" id="waFloat" href="https://wa.me/5491100000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script>
+'use strict';
+/* ===== CONFIG DEMO — editame y listo ===== */
+const CONFIG = {
+  nombre: "Tienda Demo",
+  tagline: "Ropa urbana · Básicos, remeras, buzos y jeans",
+  whatsapp: "5491100000000",
+  telefonoDisplay: "+54 9 11 0000-0000",
+  dirCorta: "Av. Demo 1234, Caseros",
+  dirLarga: "Av. Demo 1234, Caseros, Buenos Aires — a 3 cuadras de la estación.",
+  maps: "https://maps.google.com/?q=Av.+Demo+1234+Caseros",
+  instagram: "https://instagram.com/tienda.demo",
+  productos: [
+    { nombre: "Remera básica", cat: "Remeras", emoji: "👕" },
+    { nombre: "Buzo oversize", cat: "Buzos", emoji: "🧥" },
+    { nombre: "Jean mom", cat: "Jeans", emoji: "👖" },
+    { nombre: "Campera de jean", cat: "Camperas", emoji: "🧥" },
+    { nombre: "Vestido midi", cat: "Vestidos", emoji: "👗" },
+    { nombre: "Zapas urbanas", cat: "Calzado", emoji: "👟" },
+    { nombre: "Gorra plana", cat: "Accesorios", emoji: "🧢" },
+    { nombre: "Mochila", cat: "Accesorios", emoji: "🎒" }
+  ]
+};
+const $ = (id) => document.getElementById(id);
+document.title = CONFIG.nombre + " · Vidriera y pedidos por WhatsApp";
+$("nombreNegocio").textContent = CONFIG.nombre;
+$("tagline").textContent = CONFIG.tagline;
+$("direccionCorta").textContent = CONFIG.dirCorta;
+$("direccionLarga").textContent = CONFIG.dirLarga;
+$("foot").textContent = CONFIG.nombre;
+$("linkMapa").href = CONFIG.maps;
+$("linkInstagram").href = CONFIG.instagram;
+$("linkTelefono").href = "tel:+" + CONFIG.whatsapp;
+$("linkTelefono").textContent = "📞 Llamar a " + CONFIG.telefonoDisplay;
+$("waFloat").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent("Hola " + CONFIG.nombre + "! Quiero info de la vidriera.");
+
+const box = $("prods"), sel = $("prod");
+CONFIG.productos.forEach((p, i) => {
+  const d = document.createElement("div"); d.className = "prod";
+  const im = document.createElement("div"); im.className = "img"; im.textContent = p.emoji;
+  const b = document.createElement("div"); b.className = "body";
+  const n = document.createElement("div"); n.className = "name"; n.textContent = p.nombre;
+  const c = document.createElement("div"); c.className = "cat"; c.textContent = p.cat + " · consultar talle";
+  const btn = document.createElement("button"); btn.type = "button"; btn.textContent = "Consultar";
+  btn.setAttribute("aria-label", "Consultar por " + p.nombre);
+  btn.addEventListener("click", () => {
+    sel.value = p.nombre;
+    $("consulta").scrollIntoView({ behavior: "smooth", block: "center" });
+    $("nombre").focus({ preventScroll: true });
+  });
+  b.append(n, c, btn); d.append(im, b); box.append(d);
+  const o = document.createElement("option"); o.value = p.nombre; o.textContent = p.nombre;
+  sel.append(o);
+});
+
+function abierto(d = new Date()) {
+  const dia = d.getDay(), h = d.getHours() + d.getMinutes() / 60;
+  if (dia === 0) return false;
+  return h >= 10 && h < 20;
+}
+function pinta() {
+  const el = $("estadoAbierto");
+  const ok = abierto();
+  el.textContent = ok ? "● Abierto ahora" : "● Cerrado ahora";
+}
+pinta(); setInterval(pinta, 60000);
+
+$("form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const nom = $("nombre");
+  if (nom.value.trim().length < 2) { nom.focus(); return; }
+  const btn = $("btn");
+  btn.disabled = true; btn.textContent = "Abriendo WhatsApp…";
+  const msg = "Hola " + CONFIG.nombre + "! Soy " + nom.value.trim() + ". Me interesa " + sel.value + " en talle " + $("talle").value + "." + ($("notas").value.trim() ? " Aclaración: " + $("notas").value.trim() : "") + " ¿Me pasás stock y precio? Gracias!";
+  window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+  setTimeout(() => { btn.disabled = false; btn.textContent = "Consultar por WhatsApp"; }, 1500);
+});
+</script>
+</body>
+</html>
